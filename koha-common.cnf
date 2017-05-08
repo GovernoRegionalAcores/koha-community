@@ -19,7 +19,7 @@
 [client]
 port		= 3306
 socket		= /var/run/mysqld/mysqld.sock
-host            = DBHOST
+host            = mysql
 user            = root
 password        = password
 
@@ -47,7 +47,7 @@ skip-external-locking
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address		= DBHOST
+bind-address		= mysql
 #
 # * Fine Tuning
 #
