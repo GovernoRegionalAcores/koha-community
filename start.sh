@@ -33,13 +33,14 @@ sed -i "s@record->as_xml@record->as_xml_record@g" /usr/share/koha/opac/cgi-bin/o
 
 service memcached start
 service cron start
-koha-start-zebra koha
+#koha-start-zebra koha
 koha-indexer --start koha
 koha-enable-sip koha
 koha-start-sip koha
 koha-plack --enable koha
 koha-plack --stop koha
 koha-plack --start koha
+service elasticsearch start
 
 /usr/sbin/apache2 -DFOREGROUND
 /usr/sbin/apache2 -DFOREGROUND
