@@ -46,11 +46,7 @@ RUN chown -R koha-koha:koha-koha /var/lib/koha/koha/
 
 #ElasticSearch
 
-ADD libref-util-perl_0.113-1_amd64.deb /libref-util-perl_0.113-1_amd64.deb
-ADD libparser-mgc-perl_0.15-1_all.deb /libparser-mgc-perl_0.15-1_all.deb
 ADD libjpeg62-turbo_1.5.1-2_amd64.deb /libjpeg62-turbo_1.5.1-2_amd64.deb
-ADD libcatmandu-perl_1.0304-2_all.deb /libcatmandu-perl_1.0304-2_all.deb
-ADD libcatmandu-marc-perl_0.215-1_all.deb /libcatmandu-marc-perl_0.215-1_all.deb
 RUN apt-get install -y build-essential && apt-get install -y apt-utils
 RUN echo "deb http://ftp.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
 RUN echo "deb http://debian.koha-community.org/koha unstable main" | sudo tee -a /etc/apt/sources.list
