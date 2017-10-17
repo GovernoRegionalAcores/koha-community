@@ -13,7 +13,7 @@ RUN a2enmod headers proxy_http
 
 RUN cd /usr/sbin && sed -i 's@101@0@g' policy-rc.d
 
-RUN echo deb http://debian.koha-community.org/koha stable main | tee /etc/apt/sources.list.d/koha.list
+RUN echo deb http://debian.koha-community.org/koha oldstable main | tee /etc/apt/sources.list.d/koha.list
 RUN wget -O- http://debian.koha-community.org/koha/gpg.asc | apt-key add -
 RUN apt-get update && apt-get install -y koha-common
 
