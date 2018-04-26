@@ -30,6 +30,8 @@ RUN cd /etc/apache2 \
     && echo "Listen 8081" >> ports.conf
 
 ADD koha-common.cnf /etc/mysql/
+ADD koha-create /usr/sbin/koha-create
+RUN cd /usr/sbin && chmod 755 koha-create
 RUN cd /etc/mysql && koha-create --request-db --marcflavor unimarc koha
 
 RUN koha-translate --install pt-PT
