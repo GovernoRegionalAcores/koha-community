@@ -19,7 +19,8 @@ cat /etc/ssl/certs/Equifax_Secure_CA.pem >> /etc/postfix/cacert.pem
 /etc/init.d/postfix restart
 koha-email-enable koha
 
-sed -i "s@DBHOST@$MYSQL_PORT_3306_TCP_ADDR@g" /etc/koha/sites/koha/koha-conf.xml
+#sed -i "s@DBHOST@$MYSQL_PORT_3306_TCP_ADDR@g" /etc/koha/sites/koha/koha-conf.xml
+sed -i "s@<hostname>localhost</hostname>@<hostname>$MYSQL_PORT_3306_TCP_ADDR</hostname>@g" /etc/koha/sites/koha/koha-conf.xml
 
 DB_PASS=$(awk '/password/ {print $2}' /etc/mysql/koha-db-request.txt)
 mysql -h $MYSQL_PORT_3306_TCP_ADDR -uroot -p$MYSQL_ENV_MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
@@ -40,7 +41,7 @@ koha-start-sip koha
 koha-plack --enable koha
 koha-plack --stop koha
 koha-plack --start koha
-
+service elasticsearch start
 /usr/sbin/apache2 -DFOREGROUND
 /usr/sbin/apache2 -DFOREGROUND
 
